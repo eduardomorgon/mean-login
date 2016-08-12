@@ -1,0 +1,133 @@
+<div ng-include="'layout/nav.html'"></div>
+<div class="container">
+  <div ng-include="'erro/not-found.html'"></div>
+  <form name="userForm" class="form-horizontal" novalidate="true">
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend>Cadastro de Usuário</legend>
+
+      <div class="row">
+        <div class="col-md-12 column">
+          <!-- Text input-->
+          <div class="form-group" ng-class="{ 'has-error': userForm.login.$touched && userForm.login.$invalid || vm.erro.login }">
+            <label class="col-md-4 control-label" for="">Login</label>  
+            <div class="col-md-4">
+              <input name="login" data-ng-model="vm.user.login" type="text" placeholder="Login" class="form-control input-md" data-ng-minlength="3" required data-ng-readonly="vm.user._id" >
+              <div class="help-block "> 
+                <ng-messages for="userForm.login.$dirty && userForm.login.$error"  >
+                  <p ng-message="required">Campo obrigatório.</p>
+                </ng-messages>
+                <ng-messages for="vm.erro.login"  >
+                  <p ng-message="message">{{vm.erro.login.message}}</p>
+                </ng-messages>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 column">
+          <!-- Text input-->
+          <div class="form-group" ng-class="{ 'has-error': userForm.nome.$touched && userForm.nome.$invalid ||vm.erro.nome}">
+            <label class="col-md-4 control-label" for="">Nome</label>  
+            <div class="col-md-4">
+              <input name="nome" data-ng-model="vm.user.nome" type="text" placeholder="Nome" class="form-control input-md" required>
+              <div class="help-block "> 
+                <ng-messages for="userForm.nome.$dirty && userForm.nome.$error"  >
+                  <p ng-message="required">Campo obrigatório.</p>
+                </ng-messages>
+                <ng-messages for="vm.erro.nome"  >
+                  <p ng-message="message">{{vm.erro.nome.message}}</p>
+                </ng-messages>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 column">
+          <!-- Text input-->
+          <div class="form-group" ng-class="{ 'has-error': userForm.email.$touched && userForm.email.$invalid || vm.erro.email}">
+            <label class="col-md-4 control-label" for="">Email</label>  
+            <div class="col-md-4">
+              <input name="email" data-ng-model="vm.user.email" type="email" placeholder="Email" class="form-control input-md" required>
+              <div class="help-block ">
+                <ng-messages for="userForm.email.$dirty && userForm.email.$error"  >
+                  <p ng-message="required">Campo obrigatorio.</p>
+                </ng-messages>
+                <ng-messages for="vm.erro.email"  >
+                  <div ng-message="message">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Erro:</span>
+                    {{vm.erro.email.message}}
+                  </div>
+                </ng-messages>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 column">
+          <!-- Password input-->
+          <div class="form-group" ng-class="{ 'has-error': userForm.senha.$touched && userForm.senha.$invalid }">
+            <label class="col-md-4 control-label" for="">Senha</label>
+            <div class="col-md-4">
+              <input name="senha" data-ng-model="vm.user.senha" type="password" placeholder="Senha" class="form-control input-md" data-ng-minlength="5" ng-required="!vm.user._id ? 'required' : ''">
+              <div class="help-block ">
+                <ng-messages for="userForm.senha.$dirty && userForm.senha.$error"  >
+                  <p ng-message="required">Campo obrigatorio.</p>
+                  <p ng-message="minlength">Senha precisa ter mais que 5 Caracteres.</p>
+                </ng-messages>
+                <ng-messages for="vm.erro.senha"  >
+                  <p ng-message="message">{{vm.erro.senha.message}}</p>
+                </ng-messages>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 column">
+          <!-- Password input-->
+          <div class="form-group" ng-class="{ 'has-error': userForm.consenha.$touched && userForm.consenha.$invalid || vm.erro.senha}">
+            <label class="col-md-4 control-label" for="">Confirmar Senha</label>
+            <div class="col-md-4">
+              <input name="consenha" type="password" placeholder="Confirmar Senha" class="form-control input-md" data-ng-minlength="5" data-ng-match="vm.user.senha" ng-model="vm.user.con_senha" ng-required="!vm.user._id ? 'required' : ''">
+              <div class="help-block " ng-messages="userForm.consenha.$dirty && userForm.consenha.$error"  >
+                <p ng-message="required">Campo obrigatorio.</p>
+                <p ng-message="minlength">Senha precisa ter mais que 5 Caracteres.</p>
+                <p ng-message="noMatch">Senha confirmada não é igual a senha.</p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-offset-3 col-md-2 col-xs-6 column text-center">
+          <button data-ng-disabled="userForm.$invalid" data-ng-click="vm.salvar()" class="btn btn-primary">Salvar</button>
+        </div>
+        <div class="col-md-2 col-xs-6 column text-center">
+          <a href="#/usuario/listar" class="btn btn-danger">Voltar</a>
+        </div>
+
+        
+      </div>
+
+
+    </fieldset>
+  </form>
+
+</div>

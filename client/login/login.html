@@ -1,0 +1,53 @@
+<style type="text/css" media="screen">
+	.panel-login{
+		width: 300px;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 80px;
+	}
+</style>
+<div class="container-fluid">
+	<div class="panel panel-default panel-login">
+		<div class="panel-heading">
+			<h3 class="panel-title">Login</h3>
+		</div>
+		<div class="panel-body">
+			<div ng-messages="vm.erro">
+				<div class="alert alert-danger text-center" role="alert" ng-message="message">
+					{{vm.erro.message}}
+				</div>
+			</div>
+			
+			<form class="form-horizontal" method="POST">
+				<!-- Appended Input-->
+				<div class="form-group">
+					<label class="col-md-12 control-label" for="usuario"></label>
+					<div class="col-md-12">
+						<div class="input-group">
+							<input data-ng-model="vm.form.login" id="usuario" name="usuario" class="form-control" placeholder="Usuário" type="text">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+						</div>
+					</div>
+				</div>
+				<!-- Password input-->
+				<div class="form-group">
+					<label class="col-md-12 control-label" for="senha"></label>
+					<div class="col-md-12">
+						<div class="input-group">
+							<input data-ng-model="vm.form.senha" id="senha" name="senha" placeholder="Senha" class="form-control input-md" type="password">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+						</div>
+					</div>
+				</div>
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-12 control-label" for="entrar"></label>
+					<div class="col-md-12">
+						<button id="entrar" data-ng-click="vm.fazerLogin(vm.form)"" name="entrar" class="btn btn-primary">Entrar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
