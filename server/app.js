@@ -1,7 +1,7 @@
 'use strict';
 
 const bodyParser = require('body-parser');
-const config = require('../config/app');
+const config = require('./config/app');
 const dbConfig = require("./config/database");
 const express = require('express');
 const logger = require('morgan');
